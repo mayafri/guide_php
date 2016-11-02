@@ -194,14 +194,16 @@ Une variable déclarée dans une boucle ou condition existe aussi en dehors.
 
 ### Conditions
 
-| Symbole | Opérateur (renvoie `true` si...) |
-|-|-|
-|`==`|...égalité|
-|`<`|...Inférieur|
-|`>`|...Supérieur|
-|`<=`|...inférieur ou égal|
-|`>=`|...supérieur ou égal|
-|`!=`|...différent|
+```
+Symbole | Opérateur (renvoie `true` si...)
+------------------------------------------
+     == | ...égalité
+      < | ...inférieur
+      > | ...supérieur
+     <= | ...inférieur ou égal
+     >= | ...supérieur ou égal
+     != | ...différent
+```
 
 *Avertissement : l'opérateur `=` est un opérateur d'affectation, pour faire un test on utilise bien `==`.*
 
@@ -378,12 +380,13 @@ $stmt->execute();
 ```
 Paramètres de `bind_param` : les types de chaque variable puis respectivement (= dans le même ordre) les variables à injecter :
 
-| Lettre | Signification |
-|-|-|
-|`i`| Integer (nombre entier) |
-|`d`| Double (nomble à virgule) |
-|`s`| String (chaine de caractères) |
-
+```
+Lettre | Signification
+--------------------------------------
+     i | Integer (nombre entier)
+     d | Double (nomble à virgule)
+     s | String (chaine de caractères)
+```
 
 En cas d'échec, chacune de ces fonctions renvoie `false`.
 
@@ -416,12 +419,14 @@ Ouvrir un fichier : `$fichier = fopen('fichier.txt', 'r');`
 
 Différents modes :
 
-| Code | Description |
-|-|-|
-| r | Lecture seule |
-| r+ | Lecture et écriture (le fichier doit exister) |
-| a | Écriture seule (peut créer le fichier si inexistant) |
-| a+ | Lecture et écriture (peut créer le fichier si inexistant) |
+```
+Code | Description
+----------------------------------------------------------------
+   r | Lecture seule
+  r+ | Lecture et écriture (le fichier doit exister)
+   a | Écriture seule (peut créer le fichier si inexistant)
+  a+ | Lecture et écriture (peut créer le fichier si inexistant)
+```
 
 Pour écrire dans le fichier : `fputs($fichier, 'Bonjour');`
 Pour lire une ligne : `$ligne = fgets($fichier);`;
