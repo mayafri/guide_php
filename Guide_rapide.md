@@ -59,6 +59,13 @@ require_once 'mes_fonctions.php';
 ```
 Il faut être attentif à l'encodage utilisé par ses fichiers ainsi qu'à ceux inclus. Traditionnellement on utilisait pour la langue française l'encodage iso-8859-1 (ou windows-1252) qui date de 1986 puis iso-8859-15 introduit en 1998 (rajout du symbole €). En 2016, on a tendance à utiliser l'encodage universel UTF-8. Il est conseillé d'utiliser UTF-8.
 
+## Redirections
+
+On peut rediriger l'utilisateur vers une autre page facilement avec un entête HTTP.
+```
+header('Location: page.php');
+```
+
 ## echo : afficher du texte
 ```
 echo "Bonjour";
@@ -74,7 +81,7 @@ php > echo "J'ai $age ans.";
 J'ai 20 ans.
 php > echo 'J'ai $age ans.';
 J'ai $age ans.
-
+```
 ## Fonctions
 
 ### Créer une fonction
@@ -92,7 +99,6 @@ echo Addition(18, 20);
 
 Une variable déclarée dans une fonction n'existe pas en dehors de la fonction.
 
-```
 ## Structures de données
 
 ### Variables
@@ -166,7 +172,7 @@ echo "Le troisième canard : ".$canards[2];
 ```
 $informations = array('prenom' => 'Paul',
                       'nom' => 'Bismuth',
-                      'age' = 61);
+                      'age' => 61);
 ```
 
 De manière alternative :
@@ -293,6 +299,7 @@ Un moyen pratique et simple pour un visiteur de transmettre des données à un p
 <form>
     <input type="text" name="nom" placeholder="Nom">
     <input type="password" name="mdp" placeholder="Mot de passe">
+    <input type="submit" value="OK">
 </form>
 ```
 
