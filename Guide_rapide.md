@@ -451,39 +451,36 @@ Le concept du MVC est de séparer le code en trois parties :
 * Le contrôleur : traitement des données renvoyées du modèle
 * La vue : on affiche, on met en forme les données renvoyées par le contrôleur
 
-On peut mettre ça en forme facilement avec trois fonctions.
+On peut mettre ça en forme facilement avec trois fichiers.
 
+**modele.php :**
 ```
-function Modele() {
+function GetActeurs() {
     $sql = "SELECT actor_id, first_name, last_name FROM actor WHERE actor_id = $aid";
     return $mysqli->query($sql);
 }
-
-function Controleur() {
-    /* C'est pour l'exemple car cette fonction est inutile.
-       Si le nombre de lignes est vide, fetch_assoc renvoie NULL, nous n'avons
-       donc pas besoin de renvoyer artificiellement false mais on pourrait
-       imaginer un programme plus complexe renvoyant une erreur. */
-       
-    $data = Modele();
-    if($data->num_rows == 0) {
-        return false;
-    }
-    else {
-        return $data;
-    }
-}
-
-function Vue() {
-    $data = Controleur();
-    if($data) {
-        while ($actor = $result->fetch_assoc()) {
-            echo '<tr>'.$actor['first_name'] .'</tr>';
-            echo '<tr>'.$actor['last_name']  .'</tr>';
-        }
-    }
-}
 ```
-L'utilisateur va demander une page, c'est la vue : `Vue();`
 
-Dans la vie réelle, on a tendance à séparer ça en pages.
+**vue.php :**
+```
+echo '<html><body><table>';
+
+if($data) {
+    while ($actor = $result->fetch_assoc()) {
+        echo '<tr>';
+        echo '<td>'.$actor['first_name'] .'</td>';
+        echo '<td>'.$actor['last_name']  .'</td>';
+        echo '</tr>';
+    }
+}
+echo '</table></body></html>';
+```
+
+**page.php :**
+```
+require_once('modele.php');
+$data = GetActeurs();
+include_once('vue.php');
+```
+
+L'utilisateur va demander le contrôleur **page.php** qui va appeler charger les données à partir du modèle pour les afficher dans la vue.
