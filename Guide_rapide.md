@@ -448,8 +448,8 @@ Pour fermer le fichier : `fclose($fichier);`
 Le concept du MVC est de séparer le code en trois parties :
 
 * Le modèle : on va chercher les données
-* Le contrôleur : traitement des données renvoyées du modèle
-* La vue : on affiche, on met en forme les données renvoyées par le contrôleur
+* La vue : on affiche, on met en forme les données du modèle
+* Le contrôleur : c'est là qu'on relie l'affichage et les données
 
 On peut mettre ça en forme facilement avec trois fichiers.
 
@@ -465,14 +465,15 @@ function GetActeurs() {
 ```
 echo '<html><body><table>';
 
-if($data) {
-    while ($actor = $result->fetch_assoc()) {
+if(isset($data)) {
+    while ($actor = $data->fetch_assoc()) {
         echo '<tr>';
         echo '<td>'.$actor['first_name'] .'</td>';
         echo '<td>'.$actor['last_name']  .'</td>';
         echo '</tr>';
     }
 }
+
 echo '</table></body></html>';
 ```
 
@@ -483,4 +484,4 @@ $data = GetActeurs();
 include_once('vue.php');
 ```
 
-L'utilisateur va demander le contrôleur **page.php** qui va appeler charger les données à partir du modèle pour les afficher dans la vue.
+L'utilisateur va demander le contrôleur **page.php** qui va charger les données à partir du modèle puis appeler la vue.
