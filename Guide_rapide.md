@@ -1,4 +1,4 @@
-# Introduction
+# PHP : Guide rapide
 
 ## Console interactive
 
@@ -20,8 +20,6 @@ Interactive shell
 php > 
 ```
 *Avertissement : il ne faut pas omettre le point-virgule `;` à la fin d'une instruction.*
-
-# Fondamentaux
 
 ## Fichiers et inclusions
 
