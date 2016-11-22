@@ -291,9 +291,9 @@ foreach($informations as $cle => $donnee) {
     echo "La clé $cle vaut $donnee";
 }
 ```
-# Transmission d'informations
+## Transmission d'informations
 
-## Formulaires
+### Formulaires
 Un moyen pratique et simple pour un visiteur de transmettre des données à un programme PHP est de mettre à disposition un formulaire HTML. On pourra concevoir une page HTML qui contiendra le formulaire suivant :
 ```
 <form>
@@ -303,7 +303,7 @@ Un moyen pratique et simple pour un visiteur de transmettre des données à un p
 </form>
 ```
 
-## Requêtes GET
+### Requêtes GET
 
 ```
 <form action="cible.php" method="GET">
@@ -316,7 +316,7 @@ cible.php?nom=Jean&mdp=toto
 ```
 
 On récupère l'info comme ceci : `$_GET['nom']`
-## Requêtes POST
+### Requêtes POST
 
 L'information est envoyée à travers l'entête HTTP, on peut transmettre plus d'informations. Attention, l'utilisateur peut aussi modifier l'information.
 
@@ -324,13 +324,13 @@ On récupère l'info comme ceci : `$_POST['nom']`
 
 *Il ne faut jamais faire confiance à ce que rentre l'utilisateur via GET ou POST !*
 
-# Bases de données
+## Bases de données
 
-## Via mysqli
+### Via mysqli
 
 *Repris depuis [http://php.net/manual/en/mysqli.examples-basic.php](http://php.net/manual/en/mysqli.examples-basic.php)*
 
-### Connection
+#### Connection
 
 ```
 // Connecting to and selecting a MySQL database named sakila
@@ -343,7 +343,7 @@ if ($mysqli->connect_errno) {
     echo "Sorry, this website is experiencing problems.";
 }
 ```
-### Requêtes SQL
+#### Requêtes SQL
 Exécuter la requête et récupérer le résultat dans un tableau :
 ```
 $sql = "SELECT actor_id, first_name, last_name FROM actor WHERE actor_id = $aid";
@@ -366,7 +366,7 @@ $result->num_rows;
 ```
 D'autres méthodes utiles existent : [http://php.net/manual/fr/mysqli-result.num-rows.php](http://php.net/manual/fr/mysqli-result.num-rows.php)
 
-### Requêtes préparées
+#### Requêtes préparées
 
 On ne peut pas faire confiance à l'utilisateur. Si on injecte le résultat d'un GET ou POST directement dans la requête SQL, on s'expose à une faille de sécurité immense, l'utilisateur pourrait rentrer dans le formulaire des ordres SQL malicieux qui seraient interprétés.
 
@@ -388,13 +388,13 @@ Lettre | Signification
 
 En cas d'échec, chacune de ces fonctions renvoie `false`.
 
-### Lorsque c'est fini
+#### Lorsque c'est fini
 
 Fermer la connection :
 ```
 $mysqli->close();
 ```
-# Sessions
+## Sessions
 
 Les sessions permettent de retenir dans un tableau des informations personnalisées concernant chaque visiteur. Contrairement aux cookies, les sessions sont stockées côté serveur : ainsi on peut faire confiance aux données qu'elles contiennent.
 
@@ -411,7 +411,7 @@ Pour déconnecter quelqu'un, on supprime toutes ses variables de session (sinon 
 ```
 session_destroy();
 ```
-# Fichiers
+## Fichiers
 
 Ouvrir un fichier : `$fichier = fopen('fichier.txt', 'r');`
 
@@ -441,7 +441,7 @@ for($i = 0 ; $ligne = fgets($fichier) ; $i++) {
 
 Pour fermer le fichier : `fclose($fichier);`
 
-# MVC : Modèle vue contrôleur
+## MVC : Modèle vue contrôleur
 
 Le concept du MVC est de séparer le code en trois parties :
 
