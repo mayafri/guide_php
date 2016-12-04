@@ -400,6 +400,8 @@ Les sessions permettent de retenir dans un tableau des informations personnalis�
 
 Initialisation : `session_start();`
 
+*Attention : on doit utiliser session_start() avant le début de la page HTML.*
+
 Ajouter/modifier des variables de session : 
 ```
 $_SESSION['nom'] = 'Jean';
@@ -411,6 +413,31 @@ Pour déconnecter quelqu'un, on supprime toutes ses variables de session (sinon 
 ```
 session_destroy();
 ```
+
+## Cookies
+
+Écrire un cookie :
+
+```
+setcookie('nom', 'valeur', $date_expiration);
+```
+
+La date d'expiration doit s'écrire en timestamp (= nombre de secondes écoulées depuis le 1er Janvier 1970, méthode utilisée sur les systèmes UNIX). On obtient le timestamp actuel avec `time()`.
+
+*Attention : on doit utiliser setcookie avant le début de la page HTML.*
+
+Exemple pour un cookie qui va tenir une semaine :
+
+setcookie('cookieSemaine', 'toto', time()+3600*24*7);
+
+Pour afficher le cookie :
+
+```
+echo $_COOKIE['cookieSemaine'];
+```
+
+`setcookie` possède trois paramètres optionnels liés à la sécurité, à voir ici : [http://php.net/manual/fr/function.setcookie.php](http://php.net/manual/fr/function.setcookie.php)
+
 ## Fichiers
 
 Ouvrir un fichier : `$fichier = fopen('fichier.txt', 'r');`
