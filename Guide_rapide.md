@@ -428,7 +428,9 @@ La date d'expiration doit s'écrire en timestamp (= nombre de secondes écoulée
 
 Exemple pour un cookie qui va tenir une semaine :
 
+```
 setcookie('cookieSemaine', 'toto', time()+3600*24*7);
+```
 
 Pour afficher le cookie :
 
